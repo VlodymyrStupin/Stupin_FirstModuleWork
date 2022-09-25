@@ -1,4 +1,4 @@
-package firstModuleWork.firstModuleWork;
+package firstModuleWork;
 
 
 import java.util.Arrays;
