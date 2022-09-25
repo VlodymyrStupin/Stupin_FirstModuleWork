@@ -52,7 +52,7 @@ public class Task2 {
                 System.out.println("Knight can't move to " + newPositionOfTheKnight);
             }
         } else {
-            System.out.println("Inputted row doesn't exist on chess board");
+            System.out.println("Inputted square doesn't exist on chess board");
         }
 
 
