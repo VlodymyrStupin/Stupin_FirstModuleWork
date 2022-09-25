@@ -13,7 +13,6 @@ public class Task2 {
         String[] chessBoardVerticalRows = {"A", "B", "C", "D", "E", "F", "G", "H"};
         String[] chessBoardHorizontalRows = {"1", "2", "3", "4", "5", "6", "7", "8"};
         possibilityToMoveForKnight(chessBoardVerticalRows, chessBoardHorizontalRows);
-
     }
 
     private static String inputStartKnightPosition() {
@@ -54,7 +53,5 @@ public class Task2 {
         } else {
             System.out.println("Inputted square doesn't exist on chess board");
         }
-
-
     }
 }
