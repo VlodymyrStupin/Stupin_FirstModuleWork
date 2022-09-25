@@ -1,4 +1,4 @@
-package src.ua.stupin.firstModuleWork.firstModuleWork;
+package firstModuleWork.firstModuleWork;
 
 
 import java.util.Arrays;
