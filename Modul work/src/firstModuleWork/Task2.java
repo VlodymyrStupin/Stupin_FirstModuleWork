@@ -1,51 +1,60 @@
 package firstModuleWork;
 
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 // Ход коня по шахматной доске. Вводится текущее положение коня и клетка в которую пробуют его передвинуть за 1 ход.
 // Программа должна проверить, возможно ли это сделать.
 // Пример ввода "D2"
 public class Task2 {
+
     public static void main(String[] args) {
-        String[] chessDesk = {"a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1",
-                "a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2",
-                "a3", "b3", "c3", "d3", "e3", "f3", "g3", "h3",
-                "a4", "b4", "c4", "d4", "e4", "f4", "g4", "h4",
-                "a5", "b5", "c5", "d5", "e5", "f5", "g5", "h5",
-                "a6", "b6", "c6", "d6", "e6", "f6", "g6", "h6",
-                "a7", "b7", "c7", "d7", "e7", "f7", "g7", "h7",
-                "a8", "b8", "c8", "d8", "e8", "f8", "g8", "h8",
-        };
-        possibleMoveForKnight(chessDesk);
+        String[] chessBoardVerticalRows = {"A", "B", "C", "D", "E", "F", "G", "H"};
+        String[] chessBoardHorizontalRows = {"1", "2", "3", "4", "5", "6", "7", "8"};
+        possibilityToMoveForKnight(chessBoardVerticalRows, chessBoardHorizontalRows);
+
     }
 
-    private static String inputKnightStartPosition() {
+    private static String inputStartKnightPosition() {
+        System.out.println("Input start position for the knight:");
         Scanner s = new Scanner(System.in);
-        System.out.println("Input start position of the knight: ");
-        return s.nextLine();
-    }
-    private static String inputKnightPositionToMove() {
-        Scanner s = new Scanner(System.in);
-        System.out.println("Input position to move the knight: ");
         return s.nextLine();
     }
 
-    //    static  int CountOfRoutes ( int x, int y, final  int fieldRows, final  int fieldCols )
-//    {
-//        if  ( x == fieldCols && y == fieldRows )
-//            return  1 ;
-//        if  (x < fieldCols && y < fieldRows )
-//            return CountOfRoutes ( x + 2 , y + 1 , fieldRows , fieldCols ) + CountOfRoutes ( x + 1 , y + 2 , fieldRows, fieldCols ) ;
-//        else  return  0 ;
-//    }
-    public static String possibleMoveForKnight(String[] chessDesk) {
-         for (int i = 0; i<chessDesk.length; i++){
-             if (inputKnightStartPosition().equals()) {
-                 System.out.println("next");
-             }
-         }
+    private static String inputPositionToMoveTheKnight() {
+        System.out.println("Input position to move the knight:");
+        Scanner s = new Scanner(System.in);
+        return s.nextLine();
+    }
 
-        return "True";
+    public static void possibilityToMoveForKnight(String[] chessBoardVerticalRows, String[] chessBoardHorizontalRows) {
+        String positionOfTheKnight = inputStartKnightPosition();
+        String newPositionOfTheKnight = inputPositionToMoveTheKnight();
+        String boardHorizontalRows = positionOfTheKnight.split("")[0].toUpperCase();
+        String boardVerticalRows = positionOfTheKnight.split("")[1].toUpperCase();
+        String newBoardHorizontalRows = newPositionOfTheKnight.split("")[0].toUpperCase();
+        String newBoardVerticalRows = newPositionOfTheKnight.split("")[1].toUpperCase();
+        if ((Arrays.asList(chessBoardVerticalRows).contains(boardHorizontalRows) &&
+                Arrays.asList(chessBoardHorizontalRows).contains(boardVerticalRows)) &&
+                (Arrays.asList(chessBoardVerticalRows).contains(newBoardHorizontalRows) &&
+                Arrays.asList(chessBoardHorizontalRows).contains(newBoardVerticalRows))) {
+            if (((newBoardHorizontalRows.charAt(0) - boardHorizontalRows.charAt(0)) == 1 && (newBoardVerticalRows.charAt(0) - boardVerticalRows.charAt(0)) == 2) ||
+                    ((newBoardHorizontalRows.charAt(0) - boardHorizontalRows.charAt(0)) == 2 && (newBoardVerticalRows.charAt(0) - boardVerticalRows.charAt(0)) == 1) ||
+                    ((newBoardHorizontalRows.charAt(0) - boardHorizontalRows.charAt(0)) == -1 && (newBoardVerticalRows.charAt(0) - boardVerticalRows.charAt(0)) == -2) ||
+                    ((newBoardHorizontalRows.charAt(0) - boardHorizontalRows.charAt(0)) == -2 && (newBoardVerticalRows.charAt(0) - boardVerticalRows.charAt(0)) == -1) ||
+                    ((newBoardHorizontalRows.charAt(0) - boardHorizontalRows.charAt(0)) == -2 && (newBoardVerticalRows.charAt(0) - boardVerticalRows.charAt(0)) == 1) ||
+                    ((newBoardHorizontalRows.charAt(0) - boardHorizontalRows.charAt(0)) == -1 && (newBoardVerticalRows.charAt(0) - boardVerticalRows.charAt(0)) == 2) ||
+                    ((newBoardHorizontalRows.charAt(0) - boardHorizontalRows.charAt(0)) == 1 && (newBoardVerticalRows.charAt(0) - boardVerticalRows.charAt(0)) == -2) ||
+                    ((newBoardHorizontalRows.charAt(0) - boardHorizontalRows.charAt(0)) == 2 && (newBoardVerticalRows.charAt(0) - boardVerticalRows.charAt(0)) == -1)) {
+                System.out.println("Knight can move to " + newPositionOfTheKnight);
+            } else {
+                System.out.println("Knight can't move to " + newPositionOfTheKnight);
+            }
+        } else {
+            System.out.println("Inputted row doesn't exist on chess board");
+        }
+
+
     }
 }
