@@ -23,5 +23,4 @@ public class Task1 {
         }
         return countElementInArray - countOfEqualElements;
     }
-
 }
